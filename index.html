@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header class="header"></header>
+    <main class="main">
+        <section class="hero">
+          <article class="hero__to-do-container">
+            <div class="hero__text">
+                <h1 class="hero__title">Hola Nahuel!</h1>
+                <span class="hero__span">Te quedan 0 tareas por realizar</span>
+                <form action="" name="form-toDo" class="form">
+                    <input type="text" name="task" class="form__input">
+                    <div class="form__buttons-container">
+                        <button class="btn">Delete All</button>
+                        <button class="btn">Borrar Terminados</button>
+                    </div>
+                </form>
+            </div>
+            <ul class="hero__list-container" id="list-container">
+                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Hacer las cards de la section de cocina</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
+                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">as</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
+                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur fuga consequuntur quasi? Unde non a eaque illum hic nemo ut maxime, facilis, repellendus debitis quisquam enim quis, dolores iusto!</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
+                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur fuga consequuntur quasi? Unde non a eaque illum hic nemo ut maxime, facilis, repellendus debitis quisquam enim quis, dolores iusto!</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
+                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur fuga consequuntur quasi? Unde non a eaque illum hic nemo ut maxime, facilis, repellendus debitis quisquam enim quis, dolores iusto!</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
+                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur fuga consequuntur quasi? Unde non a eaque illum hic nemo ut maxime, facilis, repellendus debitis quisquam enim quis, dolores iusto!</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
+            </ul>
+          </article>
+        </section>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
