@@ -13,7 +13,9 @@
 html,body{
     font-size: 62.5%;
 }
-
+li{
+    list-style: none;
+}
 .main{
     background-color: #181818;
 }
@@ -58,6 +60,13 @@ html,body{
     flex-direction: column;
     gap: 1rem;
     width: 100%;
+    position: relative;
+
+}
+.form__inputs{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 .form__input{
     border: .1rem solid #b6b9be;
@@ -85,8 +94,21 @@ html,body{
     padding: .5rem 2rem;
     color: #fff;
 }
-
-
+.error {
+    background: #ff3333;
+    color: white;
+    padding: 1rem 10rem;
+    position: absolute;
+    /* right: 20px;
+    t
+    top: 20px; */
+    top: 1rem;
+    right: 0;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    
+  }
+  
 
 
 
@@ -101,7 +123,7 @@ html,body{
     gap: 3rem;
     /* padding-top: 2rem; */
     overflow-y: scroll;
-    position: relative;
+    /* position: relative; */
 
     
 }
@@ -157,10 +179,11 @@ html,body{
     flex-shrink: 0;
 }
 .check:checked {
-    background: rgb(1, 163, 10) url(./img/done.svg) no-repeat center center;
+    background: rgb(1, 163, 10);
     background-size: contain;
     border-color: rgb(1, 163, 10);
 }
+
 
 @media (min-width:320px) and (max-width:480px){
     .hero__to-do-container{

@@ -15,26 +15,26 @@
           <article class="hero__to-do-container">
             <div class="hero__text">
                 <h1 class="hero__title">Hola Nahuel!</h1>
-                <span class="hero__span">Te quedan 0 tareas por realizar</span>
-                <form action="" name="form-toDo" class="form">
+                <span class="hero__span" id="completed">Te quedan 0 tareas por realizar</span>
+                <form action="" name="formtoDo" class="form">
                     <input type="text" name="task" class="form__input">
+                <input type="submit" class="btn addbtn" name="addTask"id="addTask" value="Add Task">
                     <div class="form__buttons-container">
-                        <button class="btn">Delete All</button>
-                        <button class="btn">Borrar Terminados</button>
+                        <button class="btn" id="deleteAll" type="button">Delete All</button>
+                        <button class="btn" id="deleteComplete"type="button">Borrar Terminados</button>
                     </div>
+                </form>
+                <form action="">
+                    
                 </form>
             </div>
             <ul class="hero__list-container" id="list-container">
-                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Hacer las cards de la section de cocina</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
-                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">as</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
-                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur fuga consequuntur quasi? Unde non a eaque illum hic nemo ut maxime, facilis, repellendus debitis quisquam enim quis, dolores iusto!</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
-                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur fuga consequuntur quasi? Unde non a eaque illum hic nemo ut maxime, facilis, repellendus debitis quisquam enim quis, dolores iusto!</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
-                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur fuga consequuntur quasi? Unde non a eaque illum hic nemo ut maxime, facilis, repellendus debitis quisquam enim quis, dolores iusto!</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
-                <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur fuga consequuntur quasi? Unde non a eaque illum hic nemo ut maxime, facilis, repellendus debitis quisquam enim quis, dolores iusto!</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li>
+                <!-- <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Hacer las cards de la section de cocina</p><button class="btn-remove" id="removeTask"><i class="fa-solid fa-trash remove"></i></button></li> -->
             </ul>
           </article>
         </section>
     </main>
     <script src="main.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
