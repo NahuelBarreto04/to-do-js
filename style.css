@@ -162,7 +162,7 @@ li{
 .hero__item{
     font-size: 1.5rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     width: 80%;
     width: 100%;
     padding: 1rem 2rem;
@@ -214,6 +214,14 @@ li{
 }
 .cuteTheme{
     background-color: pink;
+    background-color: #ff8b94;
+
+}
+.cuteItemTheme{
+    background-color: #ffaaa5;
+}
+.darkTheme{
+    background-color:#181818
 }
 
 @media (min-width:320px) and (max-width:480px){

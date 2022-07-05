@@ -2,10 +2,17 @@ const taskElement = (obj) => {
   return `<input type="checkbox" class="check"><p class="hero__p">${obj.id})${obj.task}</p><button class="btn-remove" class="removeTask"><i class="fa-solid fa-trash remove"></i></button>`;
 };
 const spanComplete = (numTaskCompletes) => {
-  console.log(numTaskCompletes);
+  // console.log(numTaskCompletes);
   return `Te quedan ${numTaskCompletes} tareas por realizar`;
 };
-function addTask() {
+const defaulTask = () => {
+  const li = document.createElement("li");
+  li.innerHTML = `<input type="checkbox" class="check"><p class="hero__p">Ingresa una tarea</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button>`;
+  listTasks.appendChild(li);
+  li.classList.add("hero__item");
+  return;
+};
+let addTask = () => {
   let idTask = tasks.length + 1;
   const task = inputTask.value.trim();
   if (task === "") {
@@ -27,11 +34,11 @@ function addTask() {
   tasks = [...tasks, taskObj];
   createElement();
   form.reset();
-}
-function createElement() {
-  listTasks.innerHTML = "";
+};
+let createElement = () => {
   let id2 = 1;
-  if (tasks) {
+  listTasks.innerHTML = "";
+  if (tasks.length > 0) {
     tasks.forEach((obj) => {
       obj.id = id2;
       id2++;
@@ -39,14 +46,20 @@ function createElement() {
       li.innerHTML = taskElement(obj);
       listTasks.appendChild(li);
       li.classList.add("hero__item");
+      customTheme(themeUser);
       li.setAttribute("data-id", obj.id);
       if (obj.complete) {
         li.firstChild.checked = true;
       }
     });
+  } else {
+    defaulTask();
+    customTheme(themeUser);
   }
-  let taskscompleteds = tasks.filter((task) => task.complete).length || 0;
-  if (taskscompleteds > 0) {
+  let taskscompleteds =
+    tasks.filter((task) => task.complete === false).length || 0;
+  // console.log(tasksCompleted);
+  if (taskscompleteds < tasks.length) {
     spanCompleteds.innerHTML = spanComplete(taskscompleteds);
     deleteCompleteBtn.style.display = "flex";
   } else {
@@ -59,9 +72,8 @@ function createElement() {
   } else {
     deleteAllBtn.style.display = "none";
   }
-
   updateLocal("listas", tasks);
-}
+};
 function showError(msgError) {
   const liError = document.createElement("li");
   liError.innerHTML = msgError;
@@ -107,6 +119,7 @@ function deleteCompletes() {
   tasks = tasks.filter((obj) => obj.complete === false);
   updateLocal("listas", tasks);
   createElement();
+  // defaulTask();
 }
 
 let welcomeToDO = (name) => {
@@ -129,24 +142,63 @@ let welcomeToDO = (name) => {
   if (timeDay >= 6 && timeDay <= 12) {
     titleToDo.innerHTML = `Buenos días ${nameTitle}`;
   } else if (timeDay >= 12 && timeDay < 20) {
-    titleToDo.innerHTML = `Buenas tarde ${nameTitle}`;
+    titleToDo.innerHTML = `Buenas tardes ${nameTitle}`;
   } else if (timeDay >= 20 || timeDay < 6) {
     titleToDo.innerHTML = `Buenas noches ${nameTitle}`;
   }
 };
 
-// let cuteTheme = (cute) => {
-//   // for (x of listTasks.children) {
-//   //   x.style.background = "white";
-//   // }
-//   for (x of cute) {
-//     if (listTasks.className === "cuteTheme") {
-//       listTasks.classList.remove(x);
-//       console.log(listTasks.className);
-//     } else {
-//       listTasks.classList.add(x);
-//     }
-//     // console.log(x);
+let customTheme = (theme) => {
+  // for (x of listTasks.children) {
+  //   x.style.background = "white";
+
+  // }
+  console.log(theme);
+  // switch (theme) {
+  //   case "cute":
+  //     listTasks.classList.add("cuteTheme");
+  //     for (x of listTasks.children) {
+  //       console.log(x);
+  //       x.classList.add("cuteItemTheme");
+  //     }
+  //     updateLocal("Theme", "cute");
+
+  //     // if (theme !== "") {
+  //     //   let value = listTasks.classList.toggle("cuteTheme");
+  //     //   console.log(value);
+  //     //   if (!value) {
+  //     //     console.log("goli");
+  //     //     updateLocal("Theme", "");
+  //     //   } else {
+  //     //     for (x of listTasks.children) {
+  //     //       x.classList.toggle("cuteItemTheme");
+  //     //     }
+  //     //     updateLocal("Theme", "cute");
+  //     //   }
+  //     // }
+  //     break;
+
+  //   default:
+  //     break;
+  // }
+  console.log("aasad");
+  // if (theme === "cute") {
+  //   let value = listTasks.classList.toggle("cuteTheme");
+  //   console.log(value);
+  //   console.dir(listTasks);
+  //   updateLocal("Theme", theme);
+  // } else if (theme === "dark") {
+  //   listTasks.classList.toggle("darkTheme");
+  //   console.dir(listTasks);
+  // }
+};
+// for (x of cute) {
+//   if (listTasks.className === "cuteTheme") {
+//     listTasks.classList.remove(x);
+//     console.log(listTasks.className);
+//   } else {
+//     listTasks.classList.add(x);
 //   }
-//   // updateLocal("Theme", rose);
-// };
+//   // console.log(x);
+// }
+// updateLocal("Theme", rose);

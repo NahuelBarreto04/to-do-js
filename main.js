@@ -17,11 +17,13 @@ let updateLocal = (set, localItem) => {
   localStorage.setItem(set, JSON.stringify(localItem));
 };
 let nameUser = JSON.parse(localStorage.getItem("nameUser")) || "";
-let rose = ["cuteTheme"];
+let themeUser = JSON.parse(localStorage.getItem("Theme")) || "";
+// let rose = ["cuteTheme"];
 let tasksCompleted = 0;
 document.addEventListener("DOMContentLoaded", () => {
-  if (tasks.length >= 0) {
+  if (tasks) {
     createElement();
+    customTheme(themeUser);
   }
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -31,6 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
   listTasks.addEventListener("change", checkIn);
   deleteCompleteBtn.addEventListener("click", deleteCompletes);
   deleteAllBtn.addEventListener("click", deleteAllTasks);
-  // cuteBtn.addEventListener("click", cuteTheme(rose));
+  cuteBtn.addEventListener("click", (e) => {
+    console.log(e);
+    customTheme("cute");
+  });
+  darkBtn.addEventListener("click", () => customTheme("dark"));
   welcomeToDO(nameUser);
 });
