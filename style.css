@@ -91,10 +91,12 @@ li{
     position: relative;
 
 }
+
 .form__inputs{
     display: flex;
     justify-content: center;
     gap: 1rem;
+    width: 100%;
 }
 .form__input{
     border: .1rem solid #b6b9be;
@@ -121,7 +123,9 @@ li{
     border-radius: 1rem;
     padding: .5rem 2rem;
     color: #fff;
-    display: none;
+}
+.addbtn{
+    padding: .5rem 1rem;
 }
 .error {
     background: #ff3333;
@@ -219,7 +223,7 @@ li{
         border-radius: 0;
     }
     .form__input{
-        width: 80%;
+        width: 70%;
     }
     .error{
         width: 100%;
