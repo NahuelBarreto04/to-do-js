@@ -7,7 +7,7 @@ const spanComplete = (numTaskCompletes) => {
 };
 function addTask() {
   let idTask = tasks.length + 1;
-  const task = inputTask.value;
+  const task = inputTask.value.trim();
   if (task === "") {
     showError("Ingresa una tarea");
     form.reset();
