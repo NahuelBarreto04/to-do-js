@@ -1,38 +1,66 @@
 const taskElement = (obj) => {
   return `<input type="checkbox" class="check"><p class="hero__p">${obj.id})${obj.task}</p><button class="btn-remove" class="removeTask"><i class="fa-solid fa-trash remove"></i></button>`;
 };
+const spanComplete = (numTaskCompletes) => {
+  console.log(numTaskCompletes);
+  return `Te quedan ${numTaskCompletes} tareas por realizar`;
+};
 function addTask() {
   let idTask = tasks.length + 1;
   const task = inputTask.value;
   if (task === "") {
     showError("Ingresa una tarea");
+    form.reset();
+
     return;
   }
   if (tasks.some((tasks) => tasks.task.toLowerCase() == task.toLowerCase())) {
     showError("Ya has ingresado esta tarea");
+    form.reset();
     return;
   }
   const taskObj = {
     task: task,
-    id: idTask,
+    id: 0,
     complete: false,
   };
   tasks = [...tasks, taskObj];
-  updateLocal();
   createElement();
   form.reset();
 }
 function createElement() {
   listTasks.innerHTML = "";
+  let id2 = 1;
   if (tasks) {
     tasks.forEach((obj) => {
+      obj.id = id2;
+      id2++;
       const li = document.createElement("li");
       li.innerHTML = taskElement(obj);
       listTasks.appendChild(li);
       li.classList.add("hero__item");
       li.setAttribute("data-id", obj.id);
+      if (obj.complete) {
+        li.firstChild.checked = true;
+      }
     });
   }
+  let taskscompleteds = tasks.filter((task) => task.complete).length || 0;
+  if (taskscompleteds > 0) {
+    spanCompleteds.innerHTML = spanComplete(taskscompleteds);
+    deleteCompleteBtn.style.display = "flex";
+  } else {
+    spanCompleteds.innerHTML = spanComplete(taskscompleteds);
+    deleteCompleteBtn.style.display = "none";
+  }
+  let tasksLength = tasks.length;
+  if (tasksLength > 0) {
+    deleteAllBtn.style.display = "flex";
+  } else {
+    deleteAllBtn.style.display = "none";
+  }
+
+  updateLocal("listas", tasks);
 }
 function showError(msgError) {
   const liError = document.createElement("li");
@@ -51,73 +79,74 @@ let deleteTask = (e) => {
     const deleteId = Number(liParentButton.getAttribute("data-id"));
     tasks = tasks.filter((task) => task.id !== deleteId);
     listTasks.removeChild(liParentButton);
-    updateLocal();
-    let id2 = 1;
-    if (tasks) {
-      listTasks.innerHTML = "";
-      tasks.forEach((obj) => {
-        obj.id = id2;
-        id2++;
-        const li = document.createElement("li");
-        li.innerHTML = taskElement(obj);
-        listTasks.appendChild(li);
-        li.classList.add("hero__item");
-        li.setAttribute("data-id", obj.id);
-      });
-      updateLocal();
-    }
+    createElement();
+    updateLocal("listas", tasks);
   }
 };
 function deleteAllTasks() {
   tasks = [];
   listTasks.innerHTML = "";
-  updateLocal();
+  updateLocal("listas", tasks);
+  createElement();
 }
 
 function checkIn(e) {
-  // const inputCheckbox = e.target;
-  // const InputChecked = e.target.checked;
-  // console.log(inputCheckbox);
-  // podría poner {target} para desestructurar el evento y traerme solo el target
-  console.log(e.target);
-  // Busco el li padre de este checkbox que tiene el dataset con el id que necesito
   const id = Number(e.target.parentNode.dataset.id);
-  const complete = e.target.checked; // Indica si la tarea ha sido completada o no
-  state = state.map((toDo, index) => {
-    if (index === id) {
-      return { ...toDo, complete }; //Actualizamelo
+  const complete = e.target.checked;
+  tasks = tasks.map((toDo) => {
+    if (toDo.id === id) {
+      return { ...toDo, complete };
     }
-    return toDo; //Devolvemelo igual si no cambio el estado del checked
+    return toDo;
   });
-  console.log(state);
-  renderTodos(state);
-  saveState(state);
+  updateLocal("listas", tasks);
+  createElement();
 }
 
-//   //   const target = e.target;
-//   //   if (target.tagName === "CHECKBOX") {
-//   //     // const checked = target.checked;
-//   //   }
-// }
+function deleteCompletes() {
+  tasks = tasks.filter((obj) => obj.complete === false);
+  updateLocal("listas", tasks);
+  createElement();
+}
 
-// function deleteCompletes() {
-//   console.log(listTasks.children);
+let welcomeToDO = (name) => {
+  const capitalice = (name) => {
+    let firstLetter = name.charAt(0).toUpperCase();
+    let nameSlice = name.slice(1, name.length);
+    let capitaliceName = firstLetter + nameSlice;
+    return capitaliceName;
+  };
+  let nameTitle;
+  if (name === "") {
+    let nameles = prompt("Ingresa tú nombre:").trim().toLocaleLowerCase();
+    nameTitle = capitalice(nameles);
+    updateLocal("nameUser", nameTitle);
+  } else {
+    nameTitle = capitalice(name);
+  }
+  let day = new Date();
+  let timeDay = day.getHours();
+  if (timeDay >= 6 && timeDay <= 12) {
+    titleToDo.innerHTML = `Buenos días ${nameTitle}`;
+  } else if (timeDay >= 12 && timeDay < 20) {
+    titleToDo.innerHTML = `Buenas tarde ${nameTitle}`;
+  } else if (timeDay >= 20 || timeDay < 6) {
+    titleToDo.innerHTML = `Buenas noches ${nameTitle}`;
+  }
+};
+
+// let cuteTheme = (cute) => {
 //   // for (x of listTasks.children) {
-//   //   const inputCheckbox = x.firstChild;
-//   //   // console.log(inputCheckbox.checked);
-//   //   if (inputCheckbox.checked) {
-//   //   }
+//   //   x.style.background = "white";
 //   // }
-//   const markedCheckbox = document.querySelectorAll(
-//     'input[type="checkbox"]:checked'
-//   );
-//   markedCheckbox.forEach((e) => {
-//     console.log("aaaaaaa");
-//   });
-
-//   console.log(markedCheckbox);
-//   // for (var checkbox of markedCheckbox) {
-//   // document.body.append(checkbox.value + ' ');
-//   // }
-//   // }
-// }
+//   for (x of cute) {
+//     if (listTasks.className === "cuteTheme") {
+//       listTasks.classList.remove(x);
+//       console.log(listTasks.className);
+//     } else {
+//       listTasks.classList.add(x);
+//     }
+//     // console.log(x);
+//   }
+//   // updateLocal("Theme", rose);
+// };

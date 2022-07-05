@@ -27,6 +27,7 @@ li{
 }
 .hero__to-do-container{
     background-color: #fff;
+    /* background-color: rgb(172, 164, 164); */
     width: 40%;
     height: 80%;
     border-radius: 2rem;
@@ -35,6 +36,32 @@ li{
     justify-content: space-between;
     overflow: hidden;
 
+}
+/* THEMES */
+.hero__themes{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    gap: 1rem;
+   
+}
+.btn-theme{
+    padding: 1rem 2rem;
+    border-radius: 50%;
+    border: none;
+
+    
+}
+.btn-theme--cute{
+    background-color: pink;
+}
+.btn-theme--dark{
+    background-color: #181818;
+
+}
+.btn-theme--light{
+    background-color: #fff;
 }
 /* Text info */
 .hero__text{
@@ -52,6 +79,7 @@ li{
     font-size: 1.2rem;
     color: #41454b;
 }
+
 /* FORM */
 .form{
     display: flex;
@@ -93,19 +121,18 @@ li{
     border-radius: 1rem;
     padding: .5rem 2rem;
     color: #fff;
+    display: none;
 }
 .error {
     background: #ff3333;
     color: white;
     padding: 1rem 10rem;
     position: absolute;
-    /* right: 20px;
-    t
-    top: 20px; */
     top: 1rem;
     right: 0;
     border-radius: 15px;
     font-size: 1.5rem;
+    text-align: center;
     
   }
   
@@ -120,10 +147,8 @@ li{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
-    /* padding-top: 2rem; */
+    /* gap: 3rem; */
     overflow-y: scroll;
-    /* position: relative; */
 
     
 }
@@ -183,7 +208,9 @@ li{
     background-size: contain;
     border-color: rgb(1, 163, 10);
 }
-
+.cuteTheme{
+    background-color: pink;
+}
 
 @media (min-width:320px) and (max-width:480px){
     .hero__to-do-container{
@@ -193,5 +220,9 @@ li{
     }
     .form__input{
         width: 80%;
+    }
+    .error{
+        width: 100%;
+
     }
 }
