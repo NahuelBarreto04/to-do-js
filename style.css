@@ -321,6 +321,7 @@ li{
         width: 100vw;
         height: 100vh;
         border-radius: 0;
+        border: none;
     }
     .form__input{
         width: 70%;
@@ -334,7 +335,7 @@ li{
 @media (min-width:600px) and (max-width:1024px){
     .hero__to-do-container{
         width:80%;
-        
+        border: none;
     }
 
 }
