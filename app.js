@@ -2,8 +2,11 @@ const taskElement = (obj) => {
   return `<input type="checkbox" class="check"><p class="hero__p">${obj.id})${obj.task}</p><button class="btn-remove" class="removeTask"><i class="fa-solid fa-trash remove"></i></button>`;
 };
 const spanComplete = (numTaskCompletes) => {
-  // console.log(numTaskCompletes);
-  return `Te quedan ${numTaskCompletes} tareas por realizar`;
+  if (numTaskCompletes === 1) {
+    return `Te queda ${numTaskCompletes} tarea por realizar📚`;
+  } else {
+    return `Te quedan ${numTaskCompletes} tareas por realizar📚`;
+  }
 };
 const defaulTask = () => {
   const li = document.createElement("li");
@@ -46,7 +49,6 @@ let createElement = () => {
       li.innerHTML = taskElement(obj);
       listTasks.appendChild(li);
       li.classList.add("hero__item");
-      customTheme(themeUser);
       li.setAttribute("data-id", obj.id);
       if (obj.complete) {
         li.firstChild.checked = true;
@@ -54,11 +56,9 @@ let createElement = () => {
     });
   } else {
     defaulTask();
-    customTheme(themeUser);
   }
   let taskscompleteds =
     tasks.filter((task) => task.complete === false).length || 0;
-  // console.log(tasksCompleted);
   if (taskscompleteds < tasks.length) {
     spanCompleteds.innerHTML = spanComplete(taskscompleteds);
     deleteCompleteBtn.style.display = "flex";
@@ -119,7 +119,6 @@ function deleteCompletes() {
   tasks = tasks.filter((obj) => obj.complete === false);
   updateLocal("listas", tasks);
   createElement();
-  // defaulTask();
 }
 
 let welcomeToDO = (name) => {
@@ -140,65 +139,45 @@ let welcomeToDO = (name) => {
   let day = new Date();
   let timeDay = day.getHours();
   if (timeDay >= 6 && timeDay <= 12) {
-    titleToDo.innerHTML = `Buenos días ${nameTitle}`;
+    titleToDo.innerHTML = `Buenos días ${nameTitle}🌞`;
   } else if (timeDay >= 12 && timeDay < 20) {
-    titleToDo.innerHTML = `Buenas tardes ${nameTitle}`;
+    titleToDo.innerHTML = `Buenas tardes ${nameTitle}🌗`;
   } else if (timeDay >= 20 || timeDay < 6) {
-    titleToDo.innerHTML = `Buenas noches ${nameTitle}`;
+    titleToDo.innerHTML = `Buenas noches ${nameTitle}🌟🌚`;
   }
 };
+let customThemes = (theme) => {
+  switch (theme) {
+    case "cute":
+      if (theme === "cute") {
+        document.documentElement.className = "cute";
+        lightBtn.classList.remove("activeTheme");
+        darkBtn.classList.remove("activeTheme");
+        cuteBtn.classList.add("activeTheme");
+        updateLocal("theme", "cute");
+      }
 
-let customTheme = (theme) => {
-  // for (x of listTasks.children) {
-  //   x.style.background = "white";
-
-  // }
-  console.log(theme);
-  // switch (theme) {
-  //   case "cute":
-  //     listTasks.classList.add("cuteTheme");
-  //     for (x of listTasks.children) {
-  //       console.log(x);
-  //       x.classList.add("cuteItemTheme");
-  //     }
-  //     updateLocal("Theme", "cute");
-
-  //     // if (theme !== "") {
-  //     //   let value = listTasks.classList.toggle("cuteTheme");
-  //     //   console.log(value);
-  //     //   if (!value) {
-  //     //     console.log("goli");
-  //     //     updateLocal("Theme", "");
-  //     //   } else {
-  //     //     for (x of listTasks.children) {
-  //     //       x.classList.toggle("cuteItemTheme");
-  //     //     }
-  //     //     updateLocal("Theme", "cute");
-  //     //   }
-  //     // }
-  //     break;
-
-  //   default:
-  //     break;
-  // }
-  console.log("aasad");
-  // if (theme === "cute") {
-  //   let value = listTasks.classList.toggle("cuteTheme");
-  //   console.log(value);
-  //   console.dir(listTasks);
-  //   updateLocal("Theme", theme);
-  // } else if (theme === "dark") {
-  //   listTasks.classList.toggle("darkTheme");
-  //   console.dir(listTasks);
-  // }
+      break;
+    case "dark":
+      if (theme === "dark") {
+        document.documentElement.className = "dark";
+        cuteBtn.classList.remove("activeTheme");
+        // lightBtn.classList.remove("activeTheme");
+        // darkBtn.classList.add("activeTheme");
+        darkBtn.style.display = "none";
+        lightBtn.style.display = "flex";
+        updateLocal("theme", "dark");
+      }
+    default:
+      if (theme === "light") {
+        document.documentElement.className = "light";
+        cuteBtn.classList.remove("activeTheme");
+        // darkBtn.classList.remove("activeTheme");
+        // lightBtn.classList.add("activeTheme");
+        lightBtn.style.display = "none";
+        darkBtn.style.display = "flex";
+        updateLocal("theme", "light");
+      }
+      break;
+  }
 };
-// for (x of cute) {
-//   if (listTasks.className === "cuteTheme") {
-//     listTasks.classList.remove(x);
-//     console.log(listTasks.className);
-//   } else {
-//     listTasks.classList.add(x);
-//   }
-//   // console.log(x);
-// }
-// updateLocal("Theme", rose);

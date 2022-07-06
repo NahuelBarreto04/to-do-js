@@ -11,19 +11,20 @@ const cuteBtn = document.getElementById("cuteBtn");
 const darkBtn = document.getElementById("darkBtn");
 const lightBtn = document.getElementById("lightBtn");
 const toDO = document.getElementById("paint");
+let buttonsTheme = document.querySelectorAll(".hero__themes button");
 let tasks = JSON.parse(localStorage.getItem("listas")) || [];
 let updateLocal = (set, localItem) => {
   // localStorage.setItem("listas", JSON.stringify(tasks));
   localStorage.setItem(set, JSON.stringify(localItem));
 };
 let nameUser = JSON.parse(localStorage.getItem("nameUser")) || "";
-let themeUser = JSON.parse(localStorage.getItem("Theme")) || "";
-// let rose = ["cuteTheme"];
+let themeUser = JSON.parse(localStorage.getItem("theme")) || "light";
 let tasksCompleted = 0;
 document.addEventListener("DOMContentLoaded", () => {
   if (tasks) {
     createElement();
-    customTheme(themeUser);
+    // customTheme(themeUser);
+    customThemes(themeUser);
   }
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -33,10 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
   listTasks.addEventListener("change", checkIn);
   deleteCompleteBtn.addEventListener("click", deleteCompletes);
   deleteAllBtn.addEventListener("click", deleteAllTasks);
-  cuteBtn.addEventListener("click", (e) => {
-    console.log(e);
-    customTheme("cute");
+  // cuteBtn.addEventListener("click", (e) => {
+  //   console.log(e);
+  //   customTheme("cute");
+  // });
+  // darkBtn.addEventListener("click", () => customThemes(darkBtn, "dark"));
+  // lightBtn.addEventListener("click", () => customThemes(lightBtn, "light"));
+  buttonsTheme.forEach((btn) => {
+    btn.addEventListener("click", () =>
+      customThemes(btn.getAttribute("data-the"))
+    );
   });
-  darkBtn.addEventListener("click", () => customTheme("dark"));
   welcomeToDO(nameUser);
 });

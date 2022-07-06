@@ -13,13 +13,15 @@
     <main class="main">
         <section class="hero">
           <article class="hero__to-do-container" id="paint">
-            <div class="hero__themes">
-                <button type="button" class="btn-theme btn-theme--cute" id="cuteBtn">S</button:b>
-                <button type="button" class="btn-theme btn-theme--dark" id="darkBtn">S</button:b>
-                <button type="button" class="btn-theme btn-theme--light" id="lightBtn">A</button:b>
+              <div class="hero__themes">
+                <button type="button" data-the="cute" class="btn-theme btn-theme--cute" id="cuteBtn">🎀</button>
+                <div class="botone">
+                    <button type="button" data-the="dark" class="btn-theme btn-theme--dark btn-position" id="darkBtn">🌙</button>
+                    <button type="button" data-the="light" class="btn-theme btn-theme--light" id="lightBtn">💡</button>
+                </div>
             </div>
             <div class="hero__text">
-                <h1 class="hero__title" id="h1"> <span id="nameUser"></span>!</h1>
+                <h1 class="hero__title" id="h1"><span id="nameUser"></span>!</h1>
                 <span class="hero__span" id="completed"></span>
                 <form action="" name="formtoDo" class="form">
                    <div class="form__inputs">
