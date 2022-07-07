@@ -41,9 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // darkBtn.addEventListener("click", () => customThemes(darkBtn, "dark"));
   // lightBtn.addEventListener("click", () => customThemes(lightBtn, "light"));
   buttonsTheme.forEach((btn) => {
-    btn.addEventListener("click", () =>
-      customThemes(btn.getAttribute("data-the"))
-    );
+    btn.addEventListener("click", () => {
+      customThemes(btn.getAttribute("data-the"));
+      console.log(btn.getAttribute("data-the"));
+    });
   });
   welcomeToDO(nameUser);
 });
