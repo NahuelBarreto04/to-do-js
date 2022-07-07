@@ -140,7 +140,7 @@ let welcomeToDO = (name) => {
   let timeDay = day.getHours();
   if (timeDay >= 6 && timeDay <= 12) {
     titleToDo.innerHTML = `Buenos días ${nameTitle}🌞`;
-  } else if (timeDay >= 12 && timeDay < 20) {
+  } else if (timeDay > 12 && timeDay < 20) {
     titleToDo.innerHTML = `Buenas tardes ${nameTitle}🌗`;
   } else if (timeDay >= 20 || timeDay < 6) {
     titleToDo.innerHTML = `Buenas noches ${nameTitle}🌟🌚`;
