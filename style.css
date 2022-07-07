@@ -16,10 +16,12 @@ li{
 /* *THEMESS VARIABLES */
 
 .cute{
+
     --bg-hero:#181818;
     --article-bg:rgb(253, 181, 207);
     --article-border:.2rem solid transparent;
     --buttons: #f0647b;
+    --btn-hover:#d6465e;
     /*tittle and span */
     --title-color:#000;
     --span-color:#000;
@@ -35,6 +37,7 @@ li{
     --article-bg:#fff;
     --article-border:.2rem solid transparent;
     --buttons: #e92ff4;
+    --btn-hover:#dd4fd1;
     /* //tittle and span */
     --title-color:#000;
     --span-color:#000;
@@ -53,6 +56,7 @@ li{
     --article-box-shadow:rgba(236, 231, 231, 0.35) 0px 5px 15px;
     /* //botones */
     --buttons: #961e28;
+    --btn-hover:#b82b43;
     /* //tittle and span */
     --title-color:#fff;
     --span-color:#fff;
@@ -121,6 +125,8 @@ li{
     border-radius: 50%;
     border: none;
     font-size: 1.8rem;
+    cursor: pointer;
+
     
 }
 .btn-theme--cute{
@@ -135,7 +141,7 @@ li{
 }
 .btn-theme--dark:active{
     background-color: #fff;
-    border: .2rem solid #000;
+    border: .1rem solid #000;
 
 }
 .btn-theme--light{
@@ -143,11 +149,8 @@ li{
 }
 .btn-theme--light:active{
     background-color: #000;
-    border: .2rem solid #fff;
+    border: .1rem solid #fff;
 }
-/* .activeTheme{
-    border: .2rem solid red;
-} */
 .btn-position{
     position: absolute;
 }
@@ -217,6 +220,13 @@ li{
     border-radius: 1rem;
     padding: .5rem 2rem;
     color: #fff;
+    cursor: pointer;
+    /* transition: .1s ease; */
+}
+
+.btn:hover{
+    background-color: var(--btn-hover);
+
 }
 .addbtn{
     padding: .5rem 1rem;
@@ -284,6 +294,7 @@ li{
     border-radius: 80%;
     width: 3rem;
     padding: .5rem;
+    cursor: pointer;
 }
 .remove{
     font-size: 1.8rem;
@@ -292,7 +303,7 @@ li{
 
 .check[type="checkbox"]{
     flex-basis: 1;
-
+    cursor: pointer;
     -webkit-appearance: none;
     margin: 0;
     padding: 0;

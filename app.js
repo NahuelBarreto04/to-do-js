@@ -150,25 +150,16 @@ let customThemes = (theme) => {
   switch (theme) {
     case "cute":
       document.documentElement.className = "cute";
-      lightBtn.classList.remove("activeTheme");
-      darkBtn.classList.remove("activeTheme");
-      cuteBtn.classList.add("activeTheme");
       updateLocal("theme", "cute");
       break;
     case "dark":
       document.documentElement.className = "dark";
-      cuteBtn.classList.remove("activeTheme");
-      // lightBtn.classList.remove("activeTheme");
-      // darkBtn.classList.add("activeTheme");
       darkBtn.style.display = "none";
       lightBtn.style.display = "flex";
       updateLocal("theme", "dark");
       break;
     case "light":
       document.documentElement.className = "light";
-      cuteBtn.classList.remove("activeTheme");
-      // darkBtn.classList.remove("activeTheme");
-      // lightBtn.classList.add("activeTheme");
       lightBtn.style.display = "none";
       darkBtn.style.display = "flex";
       updateLocal("theme", "light");
