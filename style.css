@@ -373,7 +373,7 @@ li {
 }
 
 .modal__label {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: #fff;
 }
 
@@ -418,12 +418,26 @@ li {
         width: 100%;
 
     }
+
+    .modal__container {
+        width: 90%;
+    }
+
+    .btn--modal {
+        padding: .5rem 3rem;
+    }
 }
 
-@media (min-width:600px) and (max-width:1024px) {
+
+@media (min-width:600px) and (max-width:1200px) {
     .hero__to-do-container {
         width: 80%;
         border: none;
+    }
+
+    .modal__container {
+        width: 50%;
+        height: 20rem;
     }
 
 }
