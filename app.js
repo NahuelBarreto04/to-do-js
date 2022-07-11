@@ -8,6 +8,17 @@ const spanComplete = (numTaskCompletes) => {
     return `Te quedan ${numTaskCompletes} tareas por realizar📚`;
   }
 };
+const modal = () => {
+  return `
+<div class="modal__container">
+    <form action="" class="modal" name="formModal">
+        <label class="modal__label" for="nombre">Ingresa tu nombre:</label>
+        <input class="modal__input" type="text" name="nombre" id="nombre">
+        <input class="btn btn--modal" type="submit" value="Enviar">
+    </form>
+</div>
+`;
+};
 const defaulTask = () => {
   const li = document.createElement("li");
   li.innerHTML = `<input type="checkbox" class="check"><p class="hero__p">Ingresa una tarea</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button>`;
@@ -120,22 +131,40 @@ function deleteCompletes() {
   updateLocal("listas", tasks);
   createElement();
 }
-
+let userModal = (nameUser) => {
+  if (nameUser === "") {
+    const art = document.createElement("article");
+    art.classList.add("article__modal");
+    art.innerHTML = modal();
+    hero.appendChild(art);
+    const formModal = document.forms.formModal;
+    const modalInput = formModal.elements.nombre;
+    formModal.addEventListener("submit", (e) => {
+      e.preventDefault();
+      nameUser = modalInput.value;
+      if (nameUser === "") {
+        errorModal(art);
+      } else {
+        const modalContainer = document.querySelector(".article__modal");
+        modalContainer.remove();
+        welcomeToDO(nameUser);
+      }
+    });
+  } else {
+    welcomeToDO(nameUser);
+  }
+};
 let welcomeToDO = (name) => {
+  let normaliceName = name.trim();
+  console.log(normaliceName);
   const capitalice = (name) => {
     let firstLetter = name.charAt(0).toUpperCase();
     let nameSlice = name.slice(1, name.length);
     let capitaliceName = firstLetter + nameSlice;
     return capitaliceName;
   };
-  let nameTitle;
-  if (name === "") {
-    let nameles = prompt("Ingresa tú nombre:").trim().toLocaleLowerCase();
-    nameTitle = capitalice(nameles);
-    updateLocal("nameUser", nameTitle);
-  } else {
-    nameTitle = capitalice(name);
-  }
+  nameTitle = capitalice(normaliceName);
+  updateLocal("nameUser", nameTitle);
   let day = new Date();
   let timeDay = day.getHours();
   if (timeDay >= 6 && timeDay <= 12) {
@@ -145,6 +174,15 @@ let welcomeToDO = (name) => {
   } else if (timeDay >= 20 || timeDay < 6) {
     titleToDo.innerHTML = `Buenas noches ${nameTitle}🌟🌚`;
   }
+};
+let errorModal = (parent) => {
+  const div = document.createElement("div");
+  div.classList.add("error");
+  div.innerHTML = `<span>No has ingresado un nombre</span>`;
+  parent.appendChild(div);
+  setTimeout(() => {
+    div.remove();
+  }, 2000);
 };
 let customThemes = (theme) => {
   switch (theme) {

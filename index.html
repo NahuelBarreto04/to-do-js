@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,43 +9,46 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
+
 <body>
     <header class="header"></header>
     <main class="main">
-        <section class="hero">
-          <article class="hero__to-do-container" id="paint">
-              <div class="hero__themes">
-                <button type="button" data-the="cute" class="btn-theme btn-theme--cute" id="cuteBtn">🎀</button>
-                <div class="botone">
-                    <button type="button" data-the="dark" class="btn-theme btn-theme--dark btn-position" id="darkBtn">🌙</button>
-                    <button type="button" data-the="light" class="btn-theme btn-theme--light" id="lightBtn">💡</button>
-                </div>
-            </div>
-            <div class="hero__text">
-                <h1 class="hero__title" id="h1"><span id="nameUser"></span>!</h1>
-                <span class="hero__span" id="completed"></span>
-                <form action="" name="formtoDo" class="form">
-                   <div class="form__inputs">
-                    <input type="text" name="task" class="form__input">
-                    <input type="submit" class="btn addbtn" name="addTask"id="addTask" value="Añadir tarea">
-                   </div>
-                    <div class="form__buttons-container">
-                        <button class="btn" id="deleteAll" type="button">Borrar todo</button>
-                        <button class="btn" id="deleteComplete"type="button">Borrar Terminados</button>
+        <section class="hero" id="section">
+            <article class="hero__to-do-container" id="paint">
+                <div class="hero__themes">
+                    <button type="button" data-the="cute" class="btn-theme btn-theme--cute" id="cuteBtn">🎀</button>
+                    <div class="botone">
+                        <button type="button" data-the="dark" class="btn-theme btn-theme--dark btn-position"
+                            id="darkBtn">🌙</button>
+                        <button type="button" data-the="light" class="btn-theme btn-theme--light"
+                            id="lightBtn">💡</button>
                     </div>
-                </form>
-                <form action="">
-                    
-                </form>
-            </div>
-            <ul class="hero__list-container" id="list-container">
-                <!-- <li class="hero__item"><input type="checkbox" class="check"><p class="hero__p">Hacer las cards de la section de cocina</p><button class="btn-remove" id="removeTask"><i class="fa-solid fa-trash remove"></i></button></li> -->
-                <!-- <li class="hero__item" data-id="1"><input type="checkbox" class="check"><p class="hero__p">Ingresa una tarea</p><button class="btn-remove"><i class="fa-solid fa-trash remove"></i></button></li> -->
-            </ul>
-          </article>
+                </div>
+                <div class="hero__text">
+                    <h1 class="hero__title" id="h1"><span id="nameUser"></span></h1>
+                    <span class="hero__span" id="completed"></span>
+                    <form action="" name="formtoDo" class="form">
+                        <div class="form__inputs">
+                            <input type="text" name="task" class="form__input">
+                            <input type="submit" class="btn addbtn" name="addTask" id="addTask" value="Añadir tarea">
+                        </div>
+                        <div class="form__buttons-container">
+                            <button class="btn" id="deleteAll" type="button">Borrar todo</button>
+                            <button class="btn" id="deleteComplete" type="button">Borrar Terminados</button>
+                        </div>
+                    </form>
+                    <form action="">
+
+                    </form>
+                </div>
+                <ul class="hero__list-container" id="list-container">
+                </ul>
+            </article>
+
         </section>
     </main>
     <script src="main.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>
